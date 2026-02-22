@@ -179,8 +179,8 @@ in onServiceConnected method section after you see the log "simab device connect
 ```
 
 # Compatibility
-* Minimum Android SDK: BluetoothClampLib requires a minimum API level of 21
-* Compile Android SDK: BluetoothClampLib requires you to compile against Api 26 or later
+* Minimum Android SDK: SimabtBluetoothClamp requires a minimum API level of 21
+* Compile Android SDK: SimabtBluetoothClamp requires you to compile against Api 26 or later
 
 # Getting help
 To report a specific problem or feature request, open a new issue on Github. For questions, suggestions, or anything else, email Simab Tashkhis on [Website](https://simabt.com)
