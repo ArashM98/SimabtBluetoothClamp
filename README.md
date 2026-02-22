@@ -28,7 +28,7 @@ dependencyResolutionManagement {
 Add the dependency
 ```
 dependencies {
-        implementation 'com.github.ArashM98:SimabtBluetoothClamp:latest-version'
+        implementation 'com.github.ArashM98:SimabtBluetoothClamp:v2.0.0'
 }
 
 ```
@@ -38,7 +38,7 @@ Or Maven :
 <dependency>
     <groupId>com.github.ArashM98</groupId>
     <artifactId>SimabtBluetoothClamp</artifactId>
-    <version>latest-version</version>
+    <version>v2.0.0</version>
 </dependency>
 ```
 # how do i use BluetoothClampLib ?
