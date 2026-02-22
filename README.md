@@ -1,4 +1,4 @@
-# SimabtBluetoothClampLib
+# SimabtBluetoothClamp
 SDK for connecting Siamb Tashkhis Bluetooth Clamps
 
 SimabtBluetoothClamp is an open source SDK, provided for Simab Tashkhis Co. Bluethooth Clamps
@@ -28,7 +28,7 @@ dependencyResolutionManagement {
 Add the dependency
 ```
 dependencies {
-        implementation 'com.github.ArashM98:SimabtBluetoothClamp:latest_version'
+        implementation 'com.github.ArashM98:SimabtBluetoothClamp:latest-version'
 }
 
 ```
@@ -37,38 +37,23 @@ Or Maven :
 ```
 <dependency>
     <groupId>com.github.ArashM98</groupId>
-    <artifactId>BlutoothClampLib</artifactId>
-    <version>latest_version</version>
+    <artifactId>SimabtBluetoothClamp</artifactId>
+    <version>latest-version</version>
 </dependency>
 ```
-# how do i use SimabtBluetoothClamp ?
+# how do i use BluetoothClampLib ?
 
 1 - Connect to SIMAB bluetooth clamp and get the device address
 
 2 - Implement these classes in Activity that you want to use this SDK , and implement methods 
 ```
-package com.simabt.blutoothclamplib;
-
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.util.Log;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.simabt.blutoothclamplib.Parser.BlClampDTM0660Parser;
-import com.simabt.blutoothclamplib.Utils.BlClampHelper;
-import com.simabt.blutoothclamplib.Utils.BlClampSerialListener;
-
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayDeque;
-
 public class Main_Activity extends AppCompatActivity implements ServiceConnection, BlClampSerialListener {
 
-    BlClampDTM0660Parser parser;
+    private BlClampSerialService service;
+    private BlClampDTM0660Parser parser;
     private String packet = "";
+    boolean flag;
+    BluetoothDevice selectedDevice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -102,11 +87,13 @@ public class Main_Activity extends AppCompatActivity implements ServiceConnectio
         try {
             BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             BluetoothDevice simabDevice = bluetoothAdapter.getRemoteDevice(deviceAddress);
-            SerialSocket socket = new SerialSocket(this.getApplicationContext(), simabDevice);
+            BlClampSerialSocket socket = new BlClampSerialSocket(this.getApplicationContext(), simabDevice);
             service.connect(socket);
 			Log.d("onServiceConnected", "simab device connected")
 
-			// in this section after you see the log above press and hold "REL" button on the Simabt Clamp Device until you see read info in logs
+			************************************
+			///// in this section after you see the log above press and hold "REL" button on the Simabt Clamp Device until you see read info in logs //////
+			************************************
 
         } catch (Exception e) {
             onSerialConnectError(e);
